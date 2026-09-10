@@ -21,13 +21,13 @@ interpretation rather than fact.
 | 52% revenue growth (funnel, pricing, paid channels) | R, P | Verified |
 | ₹30L revenue secured — Adani Group gifting, within month 1 | R, P | Verified |
 | Holi gifting business won with Shree Cement | R, P | Verified |
-| Meesho and Blinkit marketplace launch; conversion lifted via listing optimisation | R, P | Verified — **no conversion figure exists**, and none is stated on the site |
+| Meesho and Blinkit marketplace launch; conversion lifted via listing optimisation | R, P | Verified — no conversion figure is documented (confirmed by Ansh 2026-09-10), and none is stated on the site |
 | Box-design turnaround cut 86% via forecasting/planning automation | R, P | Verified |
 | 12 primary field studies; onboarding improved 17%; ₹50L+ disbursed in 2 months | R | Verified |
 | 16 Area Sales Managers across 5 zones (JK Cements) | R | Verified |
 | AIESEC enrolments +12% | R | Verified |
 | EmpowerLille: 80% concept validation, dual-revenue B2B2C, Grade A | R, P | Verified |
-| India coffee market: ₹8,200 Cr, FY26 filings, 10 slides, Team 6 | P only | **Confirm** — carried from the existing portfolio, not on the résumé |
+| India coffee market: ₹8,200 Cr, FY26 filings, 10 slides, Team 6 | P, confirmed by Ansh 2026-09-10 | Verified |
 | GPA 3.36/4 (top 20%), EUR 1,241 merit scholarship, Grade 'A' at IESEG | R | Verified |
 | Class XII 83.6%, Class X 91% | R | Verified |
 | Selected from 400+ students across 4 campuses | R | Verified |
@@ -59,22 +59,29 @@ University (BBA Hons, 2022 – 2024, Bengaluru) · Neerja Modi School (2019 –
   verbs ("spearheading", "owning launch execution"), which describe Ansh's
   ownership within a company effort.
 
-## 4. Open items — for Ansh to confirm or supply
+## 4. Confirmed by Ansh — 2026-09-10
+
+All five items previously listed here were reviewed and confirmed correct:
 
 1. **Coffee market-map figures** (₹8,200 Cr, FY26 filings, ten slides, Team 6) —
-   sourced from the existing portfolio only. Confirm before wider use.
-2. **Current status.** The résumé shows Indo Divine ending Jun '26 and Masters'
-   Union as "pursuing". Confirm what is current now, and whether "Based: New
-   Delhi" is right.
-3. **Marketplace conversion lift.** The site says conversion was lifted without
-   a number, because no number is documented. Supply one if it exists.
-4. **Reflection section (§6.6)** is hidden until Ansh writes a real changed
-   assumption, rejected approach or lesson. See `PROJECT_PLAN.md` §4.
-5. **Case-study framing.** "The Position", "The Insight" and "The Learning"
-   chapters are interpretation (marked **I**) built on verified facts — they
-   read as Ansh's reasoning, so he should confirm they match how he actually
-   thought about each situation. Each case study carries a `reviewNote` in
-   `src/data/portfolio.ts` saying exactly which lines these are.
+   confirmed. Now treated as verified above.
+2. **Current status** — Indo Divine Sept '25 – Jun '26, Masters' Union
+   pursuing, based in New Delhi. Confirmed as published.
+3. **Marketplace conversion lift** — confirmed that no figure is documented.
+   The site states the lift without a number, which is the correct treatment.
+4. **Case-study framing** — the "Position", "Insight" and "Learning" chapters
+   were confirmed to match how Ansh actually reasoned through each situation.
+   The `reviewNote` on each case study now records that confirmation.
+5. **MU Muse Match** — confirmed and restored to the archive, with its
+   `preview--mu-muse-match.lovable.app` link.
+
+**Still outstanding:** the Reflection section (§6.6) remains hidden. It needs a
+real changed assumption, rejected approach or lesson in Ansh's own words — see
+`PROJECT_PLAN.md` §4. Nothing there can be written for him.
+
+**One standing caveat:** the MU Muse Match link points at a third-party preview
+host. It resolved when added; re-check it before sending the portfolio to
+anyone, since preview URLs expire outside our control.
 
 ## 5. Links
 
@@ -84,9 +91,5 @@ University (BBA Hons, 2022 – 2024, Bengaluru) · Neerja Modi School (2019 –
 | Coffee market map | `assets/projects/coffee-market-map.pdf` | 200 |
 | Automation blueprint | `assets/projects/coffee-stock-alert.blueprint.json` | 200 |
 | LinkedIn | `https://www.linkedin.com/in/ansh-arora-44b51a257` | Carried from the existing portfolio, unchanged |
+| MU Muse Match | `https://preview--mu-muse-match.lovable.app` | Confirmed by Ansh 2026-09-10; third-party preview host, re-check before sharing |
 | Email / phone | `ansharora116@gmail.com` · `+91 98291 17034` | From the résumé |
-
-**Not carried over:** the MU Muse Match project and its `lovable.app` preview
-link. It is a live third-party preview URL unrelated to the strategy narrative,
-and it was left out rather than published unverified. It can be added to the
-archive in `src/data/portfolio.ts` if Ansh wants it.

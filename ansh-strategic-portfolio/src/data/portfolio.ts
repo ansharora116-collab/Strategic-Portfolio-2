@@ -9,6 +9,8 @@
  *    interpretive narration of those verified facts. Where a line asserts more
  *    than the source documents state, it carries a `reviewNote` and, if it
  *    cannot be published safely, `published: false` keeps it out of the DOM.
+ *  - Every fact below was confirmed by Ansh on 2026-09-10, including the
+ *    figures that originated in the existing portfolio rather than the résumé.
  *  - See CONTENT_AUDIT.md for the fact-by-fact provenance table.
  */
 
@@ -257,7 +259,7 @@ export const caseStudies: CaseStudy[] = [
     proves: ['gtm', 'distribution', 'pricing', 'funnel', 'launch', 'ownership'],
     published: true,
     reviewNote:
-      'Metrics verified from résumé. Position/Insight/Learning are interpretive framing of those facts — confirm phrasing before sharing widely.',
+      'Metrics from résumé. Position/Insight/Learning are framing of those facts; Ansh confirmed the framing matches his reasoning (2026-09-10).',
   },
   {
     id: 'enterprise-gifting',
@@ -325,7 +327,7 @@ export const caseStudies: CaseStudy[] = [
     proves: ['enterprise', 'partnerships', 'stakeholders', 'ownership'],
     published: true,
     reviewNote:
-      '₹30L and both account names verified from résumé. Insight/Learning are framing.',
+      '₹30L and both account names from résumé. Insight/Learning are framing, confirmed by Ansh (2026-09-10).',
   },
   {
     id: 'marketplace-ops',
@@ -393,7 +395,7 @@ export const caseStudies: CaseStudy[] = [
     proves: ['marketplace', 'process', 'forecasting', 'automation', 'funnel'],
     published: true,
     reviewNote:
-      '86% turnaround reduction and both marketplaces verified from résumé. Conversion lift is stated without a figure, as the source gives none. The linked blueprint is a separate automation project, labelled as related.',
+      '86% turnaround reduction and both marketplaces from résumé. The conversion lift is deliberately stated without a figure — Ansh confirmed none is documented (2026-09-10). The linked blueprint is a separate automation project, labelled as related.',
   },
   {
     id: 'coffee-market-map',
@@ -461,7 +463,7 @@ export const caseStudies: CaseStudy[] = [
     proves: ['sizing', 'competitive', 'unitecon', 'research'],
     published: true,
     reviewNote:
-      '₹8,200 Cr, FY26 filings, ten slides and Team 6 carried over from the existing portfolio — confirm before public use. Team project: contribution is described, sole ownership is not implied.',
+      '₹8,200 Cr, FY26 filings, ten slides and Team 6 confirmed by Ansh (2026-09-10). Team project: contribution is described, sole ownership is not implied.',
   },
 ];
 
@@ -520,6 +522,23 @@ export const archive: ArchiveItem[] = [
     },
     proves: ['automation', 'process'],
     published: true,
+  },
+  {
+    id: 'mu-muse-match',
+    title: 'MU Muse Match',
+    context: "Masters' Union — product build, compatibility platform",
+    period: 'Pursuing',
+    summary:
+      'A compatibility platform for verified Masters’ Union students, built from the profiling model up. Instead of matching on photos it profiles people across OCEAN personality traits, loyalty attitudes, ambition and lifestyle, matches on the result, and coaches the pairing afterwards.',
+    link: {
+      href: 'https://preview--mu-muse-match.lovable.app',
+      label: 'Open the live preview',
+      external: true,
+    },
+    proves: ['research', 'ownership'],
+    published: true,
+    reviewNote:
+      'Confirmed by Ansh (2026-09-10). Third-party preview host, live at the time of writing — recheck the link before sharing.',
   },
   {
     id: 'meadows',
@@ -605,7 +624,7 @@ export const capabilities: Capability[] = [
   { id: 'forecasting', territory: 'execution', name: 'Forecasting & planning', evidence: ['marketplace-ops'] },
   { id: 'automation', territory: 'execution', name: 'Workflow automation', evidence: ['marketplace-ops', 'stock-alert'] },
   { id: 'stakeholders', territory: 'execution', name: 'Stakeholder management', evidence: ['enterprise-gifting', 'jk-cements', 'aiesec'] },
-  { id: 'ownership', territory: 'execution', name: 'Cross-functional ownership', evidence: ['dark-stores', 'enterprise-gifting', 'meadows'] },
+  { id: 'ownership', territory: 'execution', name: 'Cross-functional ownership', evidence: ['dark-stores', 'enterprise-gifting', 'mu-muse-match', 'meadows'] },
 ];
 
 /** Tools, kept separate from capabilities because a tool is not a claim. */

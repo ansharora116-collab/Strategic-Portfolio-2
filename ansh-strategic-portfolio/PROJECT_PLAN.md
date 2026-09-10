@@ -44,7 +44,7 @@ recoloured, retouched, cropped, filtered or regenerated.
 | 6.2 | Hero-to-board transition | GSAP ScrollTrigger pin: overlay deepens, board lines resolve, the two headline halves separate. Skipped entirely under reduced motion |
 | 6.3 | Approach — How I Play | One board, three states, real tablist. Stacked steps below 760px |
 | 6.4 | Marketing — Moving the Market | Four questions on one accumulating board; answered squares stay held |
-| 6.5 | Featured Work — Moves That Mattered | Four case studies in the fixed 7-chapter order, plus a compact archive of six |
+| 6.5 | Featured Work — Moves That Mattered | Four case studies in the fixed 7-chapter order, plus a compact archive of seven |
 | 6.6 | Reflection — Moves Not Made | Built but **not published** — no verified content exists (see below) |
 | 6.7 | Capabilities — Across the Board | Four territories, 18 capabilities, each linked to the work that proves it |
 | 6.8 | Behind the Moves | The photograph's only appearance, unedited, shown whole |
@@ -75,5 +75,9 @@ in Ansh's own words and set `published: true`. No other change is needed.
 
 ## 6. Open items for Ansh
 
-See `CONTENT_AUDIT.md` §4 — a short list of facts to confirm and the one
-section awaiting his own words.
+The five facts flagged at handoff were confirmed on 2026-09-10 and are now
+published (see `CONTENT_AUDIT.md` §4), including MU Muse Match, which was
+restored to the archive.
+
+One item remains: the **Reflection section (§6.6) is still hidden**, because it
+needs a real lesson in Ansh's own words. Everything else is verified.

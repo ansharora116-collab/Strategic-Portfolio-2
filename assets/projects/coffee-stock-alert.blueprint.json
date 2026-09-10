@@ -1,0 +1,204 @@
+{
+  "_note": "Portfolio copy of a Make.com scenario. Email addresses, Make connection IDs and the Airtable base ID are redacted, and table IDs are renamed to readable names, so this documents the automation's design rather than importing as-is.",
+  "name": "Coffee Shop - Orders to Stock Alert",
+  "flow": [
+    {
+      "id": 1,
+      "module": "airtable:TriggerWatchRecords",
+      "version": 3,
+      "parameters": {
+        "base": "appREDACTED",
+        "table": "tblOrders",
+        "config": {
+          "labelField": "Product",
+          "triggerField": "Created"
+        },
+        "maxRecords": 10,
+        "__IMTCONN__": 0,
+        "useColumnId": true
+      },
+      "mapper": {},
+      "metadata": {
+        "designer": {
+          "x": 0,
+          "y": 150
+        }
+      }
+    },
+    {
+      "id": 2,
+      "module": "airtable:ActionSearchRecords",
+      "version": 3,
+      "parameters": {
+        "__IMTCONN__": 0
+      },
+      "mapper": {
+        "base": "appREDACTED",
+        "table": "tblRecipeIngredients",
+        "formula": "{Product} = '{{replace(1.fldjXHFsRTD3SzB2G; \"'\"; \"\")}}'",
+        "maxRecords": 20,
+        "useColumnId": true
+      },
+      "metadata": {
+        "designer": {
+          "x": 300,
+          "y": 150
+        }
+      }
+    },
+    {
+      "id": 3,
+      "module": "airtable:ActionSearchRecords",
+      "version": 3,
+      "parameters": {
+        "__IMTCONN__": 0
+      },
+      "mapper": {
+        "base": "appREDACTED",
+        "table": "tblInventory",
+        "formula": "RECORD_ID() = '{{2.fldxguIeUtq1b3VcD}}'",
+        "maxRecords": 1,
+        "useColumnId": true
+      },
+      "metadata": {
+        "designer": {
+          "x": 600,
+          "y": 150
+        }
+      }
+    },
+    {
+      "id": 4,
+      "module": "airtable:ActionUpdateRecords",
+      "version": 3,
+      "parameters": {
+        "__IMTCONN__": 0
+      },
+      "mapper": {
+        "id": "{{3.id}}",
+        "base": "appREDACTED",
+        "table": "tblInventory",
+        "record": {
+          "fldIIlMcvj2Ti6KzR": "{{max(3.fldIIlMcvj2Ti6KzR - (2.fldBTTseFDn8nm6yH * 1.fld78siRbDEC4yMQa); 0)}}"
+        },
+        "typecast": false,
+        "useColumnId": true
+      },
+      "metadata": {
+        "designer": {
+          "x": 900,
+          "y": 150
+        }
+      },
+      "onerror": [
+        {
+          "id": 104,
+          "module": "google-email:sendAnEmail",
+          "version": 4,
+          "parameters": {
+            "__IMTCONN__": 0
+          },
+          "mapper": {
+            "to": [
+              "operations@example.com"
+            ],
+            "content": "<p>The inventory automation failed to update stock while processing an order.</p><p>Order product: {{1.fldjXHFsRTD3SzB2G}}</p><p>Quantity sold: {{1.fld78siRbDEC4yMQa}}</p><p>Recipe ingredient record: {{2.fldxguIeUtq1b3VcD}}</p><p>Error: {{4.__ERROR__.message}}</p><p>Please check and fix this manually in Airtable.</p>",
+            "subject": "Inventory automation error — manual check needed",
+            "bodyType": "rawHtml"
+          },
+          "metadata": {
+            "designer": {
+              "x": 1200,
+              "y": 300
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "module": "util:TextAggregator",
+      "version": 1,
+      "parameters": {
+        "feeder": 2,
+        "rowSeparator": "\n"
+      },
+      "filter": {
+        "name": "Stock at or below threshold",
+        "conditions": [
+          [
+            {
+              "a": "{{max(3.fldIIlMcvj2Ti6KzR - (2.fldBTTseFDn8nm6yH * 1.fld78siRbDEC4yMQa); 0)}}",
+              "b": "{{3.fld2BBvUTDo99DULq}}",
+              "o": "number:lessorequal"
+            }
+          ]
+        ]
+      },
+      "mapper": {
+        "value": "<div style=\"margin-bottom:18px;padding:14px 16px;border:1px solid #e2e2e2;border-radius:6px;\"><h3 style=\"margin:0 0 6px 0;font-size:16px;color:#b03a2e;\">{{3.fldyIO9UCUAsmmd3R}}</h3><p style=\"margin:2px 0;font-size:14px;\">Current stock: <strong>{{max(3.fldIIlMcvj2Ti6KzR - (2.fldBTTseFDn8nm6yH * 1.fld78siRbDEC4yMQa); 0)}} {{3.fldYo2uMFl28EkrIt}}</strong> &nbsp;|&nbsp; Threshold: {{3.fld2BBvUTDo99DULq}} {{3.fldYo2uMFl28EkrIt}}</p><p style=\"margin:2px 0;font-size:14px;\">Suggested reorder: <strong>{{3.fldIkLwSae7BgObY8}} {{3.fldYo2uMFl28EkrIt}}</strong> from {{3.fldOj8PHtmzjF4gKA}} ({{3.fldwsVjNUIOrbIilj}})</p><p style=\"margin:10px 0 2px 0;font-size:12px;color:#666;\">Reply-ready message for {{3.fldwsVjNUIOrbIilj}}:</p><blockquote style=\"margin:2px 0 0 0;padding:8px 12px;background:#f6f6f6;border-left:3px solid #ccc;font-size:13px;color:#333;\">Subject: Reorder request — {{3.fldyIO9UCUAsmmd3R}}<br>Hi {{3.fldOj8PHtmzjF4gKA}} team,<br>We'd like to place a reorder for {{3.fldIkLwSae7BgObY8}} {{3.fldYo2uMFl28EkrIt}} of {{3.fldyIO9UCUAsmmd3R}}.<br>Thanks,<br>Premium Coffee and Cafe</blockquote></div>"
+      },
+      "metadata": {
+        "designer": {
+          "x": 1200,
+          "y": 0
+        }
+      }
+    },
+    {
+      "id": 7,
+      "module": "google-email:sendAnEmail",
+      "version": 4,
+      "parameters": {
+        "__IMTCONN__": 0
+      },
+      "filter": {
+        "name": "Has at least one low-stock item",
+        "conditions": [
+          [
+            {
+              "a": "{{5.text}}",
+              "b": "",
+              "o": "text:notequal"
+            }
+          ]
+        ]
+      },
+      "mapper": {
+        "to": [
+          "operations@example.com"
+        ],
+        "content": "<div style=\"font-family:Arial,Helvetica,sans-serif;max-width:620px;margin:0 auto;\"><div style=\"background:#2c3e50;color:#ffffff;padding:20px 24px;border-radius:8px 8px 0 0;\"><h2 style=\"margin:0;font-size:20px;\">Premium Coffee and Cafe</h2><p style=\"margin:4px 0 0 0;font-size:13px;opacity:0.8;\">Inventory Alert</p></div><div style=\"padding:20px 24px;border:1px solid #e2e2e2;border-top:none;border-radius:0 0 8px 8px;\"><p style=\"font-size:14px;color:#333;\">The following item(s) have dropped to or below their reorder threshold:</p>{{5.text}}<p style=\"margin-top:20px;font-size:12px;color:#999;\">Triggered by order: {{1.fldjXHFsRTD3SzB2G}} × {{1.fld78siRbDEC4yMQa}} &mdash; automated message from your inventory system.</p></div></div>",
+        "subject": "Low stock alert — {{1.fldjXHFsRTD3SzB2G}} order",
+        "bodyType": "rawHtml"
+      },
+      "metadata": {
+        "designer": {
+          "x": 1500,
+          "y": 0
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "instant": false,
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "autoCommitTriggerLast": true,
+      "sequential": false,
+      "slots": null,
+      "confidential": false,
+      "dataloss": false,
+      "dlq": false,
+      "freshVariables": false
+    },
+    "designer": {
+      "orphans": []
+    },
+    "zone": "eu1.make.com",
+    "notes": []
+  }
+}

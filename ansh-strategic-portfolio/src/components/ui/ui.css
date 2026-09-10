@@ -1,0 +1,136 @@
+/* ------------------------------ Actions ---------------------------- */
+
+.action {
+  --action-fg: var(--warm-white);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.95rem 1.6rem;
+  border: 1px solid var(--border-strong);
+  color: var(--action-fg);
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-decoration: none;
+  overflow: hidden;
+  transition:
+    color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out);
+}
+
+.action span {
+  position: relative;
+  z-index: 1;
+}
+
+/* The fill sweeps in from the bottom — one transform, no layout work. */
+.action::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--warm-white);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform var(--dur-mid) var(--ease-out);
+}
+
+.action:hover,
+.action:focus-visible {
+  color: var(--black);
+  border-color: var(--warm-white);
+}
+
+.action:hover::before,
+.action:focus-visible::before {
+  transform: scaleY(1);
+}
+
+.action--solid {
+  background: var(--warm-white);
+  color: var(--black);
+  border-color: var(--warm-white);
+}
+
+.action--solid::before {
+  background: var(--black);
+}
+
+.action--solid:hover,
+.action--solid:focus-visible {
+  color: var(--warm-white);
+}
+
+.action--quiet {
+  padding-inline: 0;
+  border: 0;
+  border-bottom: 1px solid var(--border-strong);
+  padding-bottom: 0.45rem;
+}
+
+.action--quiet::before {
+  display: none;
+}
+
+.action--quiet:hover,
+.action--quiet:focus-visible {
+  color: var(--warm-white);
+  border-color: var(--warm-white);
+}
+
+/* ------------------------------ Metrics ---------------------------- */
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1px;
+  margin: 0;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+
+.metrics__item {
+  padding: 1.1rem 1.2rem 1.3rem;
+  background: var(--black);
+}
+
+.metrics__item dt {
+  margin-bottom: 0.55rem;
+}
+
+.metrics__item dd {
+  margin: 0;
+  color: var(--warm-white);
+  font-family: var(--font-display);
+  font-size: var(--step-2);
+  line-height: 1;
+  letter-spacing: 0.01em;
+}
+
+/* ------------------------------- Pills ----------------------------- */
+
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.pills__item {
+  padding: 0.42rem 0.85rem;
+  border: 1px solid var(--border);
+  color: var(--mid-grey);
+  font-family: var(--font-mono);
+  font-size: var(--step--2);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* --------------------------- Section head -------------------------- */
+
+.section__title--serif {
+  font-family: var(--font-serif);
+  font-size: var(--step-3);
+  line-height: 1.12;
+  text-transform: none;
+}

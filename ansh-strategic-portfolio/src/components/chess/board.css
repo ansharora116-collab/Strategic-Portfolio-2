@@ -1,0 +1,95 @@
+.board {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.board__checker rect {
+  fill: rgba(255, 255, 255, 0.022);
+}
+
+.board__grid line {
+  stroke: var(--border);
+  stroke-width: 0.12;
+}
+
+.board__square {
+  transition:
+    fill var(--dur-mid) var(--ease-out),
+    stroke-opacity var(--dur-mid) var(--ease-out);
+}
+
+.board__square.is-held {
+  fill: rgba(255, 255, 255, 0.11);
+  stroke: rgba(255, 255, 255, 0.32);
+  stroke-width: 0.16;
+}
+
+.board__square.is-active {
+  fill: rgba(242, 240, 234, 0.9);
+  stroke: var(--warm-white);
+  stroke-width: 0.18;
+}
+
+.board__path {
+  stroke: var(--warm-white);
+  stroke-width: 0.34;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}
+
+.board__path.is-drawing {
+  stroke-dasharray: 220;
+  stroke-dashoffset: 220;
+  animation: board-draw 1.1s var(--ease-out) forwards;
+}
+
+@keyframes board-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.board__nodes circle {
+  fill: var(--warm-white);
+}
+
+.board__labels text {
+  fill: var(--warm-white);
+  font-family: var(--font-mono);
+  font-size: 3.1px;
+  letter-spacing: 0.06em;
+  text-anchor: middle;
+}
+
+.board__open {
+  fill: none;
+  stroke: var(--warm-white);
+  stroke-width: 0.2;
+  stroke-dasharray: 1.4 1.2;
+  animation: board-open 3.4s var(--ease-in-out) infinite;
+}
+
+@keyframes board-open {
+  0%,
+  100% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .board__path.is-drawing {
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+
+  .board__open {
+    animation: none;
+    opacity: 0.8;
+  }
+}

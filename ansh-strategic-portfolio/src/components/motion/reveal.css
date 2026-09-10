@@ -1,0 +1,46 @@
+.reveal {
+  opacity: 0;
+  transition:
+    opacity var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out);
+  will-change: opacity, transform;
+}
+
+.reveal--up {
+  transform: translate3d(0, 22px, 0);
+}
+
+/* The clip lives on the inner wrapper: clipping the observed element itself
+   would zero its intersection rectangle and the observer would never fire. */
+.reveal__inner {
+  display: block;
+  clip-path: inset(0 0 105% 0);
+  transform: translate3d(0, 12px, 0);
+  transition:
+    clip-path var(--dur-slow) var(--ease-out),
+    transform var(--dur-slow) var(--ease-out);
+  transition-delay: inherit;
+}
+
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+  will-change: auto;
+}
+
+.reveal.is-in .reveal__inner {
+  clip-path: inset(0 0 -25% 0);
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+
+  .reveal__inner {
+    clip-path: none;
+    transform: none;
+  }
+}

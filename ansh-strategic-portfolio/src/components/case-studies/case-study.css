@@ -1,0 +1,151 @@
+.case {
+  padding-block: clamp(3.5rem, 9vh, 7rem);
+  border-top: 1px solid var(--border);
+}
+
+.case:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.case__meta {
+  display: flex;
+  gap: 1.1rem;
+  align-items: baseline;
+  margin-bottom: 0.9rem;
+}
+
+.case__movename {
+  color: var(--warm-white);
+}
+
+.case__title {
+  font-size: var(--step-3);
+  margin-bottom: 0.9rem;
+}
+
+.case__context {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  font-size: var(--step--1);
+  color: var(--mid-grey);
+  margin-bottom: clamp(2rem, 5vh, 3.5rem);
+}
+
+.case__dot {
+  opacity: 0.6;
+}
+
+.case__body {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.85fr) minmax(320px, 1.15fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+
+.case--flip .case__visual {
+  order: 2;
+}
+
+.case__visual {
+  position: sticky;
+  top: 6.5rem;
+}
+
+.case__board {
+  border: 1px solid var(--border);
+  padding: clamp(1rem, 2.5vw, 2rem);
+  background: var(--soft-black);
+}
+
+.case__board-caption {
+  margin: 0.9rem 0 0;
+}
+
+.chapters {
+  display: grid;
+  gap: 1.9rem;
+  counter-reset: chapter;
+}
+
+.chapters__item {
+  position: relative;
+  padding-left: 1.6rem;
+  border-left: 1px solid var(--border);
+}
+
+.chapters__item::before {
+  content: '';
+  position: absolute;
+  left: -3px;
+  top: 0.55rem;
+  width: 5px;
+  height: 5px;
+  background: var(--graphite);
+}
+
+/* The three chapters that carry the argument sit brighter than the rest. */
+.chapters__item--insight::before,
+.chapters__item--move::before,
+.chapters__item--outcome::before {
+  background: var(--warm-white);
+}
+
+.chapters__label {
+  margin: 0 0 0.55rem;
+  color: var(--mid-grey);
+}
+
+.chapters__item--insight .chapters__label,
+.chapters__item--move .chapters__label,
+.chapters__item--outcome .chapters__label {
+  color: var(--warm-white);
+}
+
+.chapters__body {
+  margin: 0;
+  color: var(--muted-white);
+}
+
+.chapters__item--outcome .chapters__body {
+  color: var(--warm-white);
+  font-family: var(--font-serif);
+  font-size: var(--step-1);
+  line-height: 1.35;
+}
+
+.case__footer {
+  display: grid;
+  gap: 1.4rem;
+  margin-top: 2.6rem;
+}
+
+.case__link {
+  justify-self: start;
+}
+
+@media (max-width: 900px) {
+  .case__body {
+    grid-template-columns: 1fr;
+  }
+
+  .case__visual,
+  .case--flip .case__visual {
+    order: 0;
+    position: static;
+    max-width: 22rem;
+  }
+}
+
+@media (max-width: 760px) {
+  /* Stack the meta line instead of leaving orphaned separators. */
+  .case__context {
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .case__dot {
+    display: none;
+  }
+}

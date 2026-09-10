@@ -1,0 +1,131 @@
+.journey__layout {
+  display: grid;
+  grid-template-columns: minmax(260px, 0.8fr) minmax(320px, 1.2fr);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: start;
+}
+
+.journey__board {
+  position: sticky;
+  top: 6.5rem;
+}
+
+.journey__list {
+  display: grid;
+}
+
+.journey__stop {
+  border-top: 1px solid var(--border);
+}
+
+.journey__stop:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.journey__button {
+  display: grid;
+  grid-template-columns: 3.2rem 1fr auto;
+  gap: 1.2rem;
+  width: 100%;
+  padding: 1.5rem 0.2rem;
+  text-align: left;
+  transition: background var(--dur-fast) var(--ease-out);
+}
+
+.journey__stop.is-active .journey__button {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.journey__coord {
+  padding-top: 0.3rem;
+  text-transform: lowercase;
+}
+
+.journey__stop.is-active .journey__coord {
+  color: var(--warm-white);
+}
+
+.journey__main {
+  display: grid;
+  gap: 0.3rem;
+}
+
+.journey__place {
+  font-size: var(--step-2);
+  color: var(--warm-white);
+  line-height: 1;
+}
+
+.journey__frame {
+  text-transform: none;
+  letter-spacing: 0.1em;
+}
+
+.journey__role {
+  color: var(--muted-white);
+  font-size: var(--step--1);
+}
+
+.journey__org {
+  color: var(--mid-grey);
+  font-size: var(--step--1);
+}
+
+.journey__detail {
+  margin-top: 0.5rem;
+  color: var(--muted-white);
+  font-size: var(--step--1);
+  max-width: 54ch;
+}
+
+.journey__period {
+  padding-top: 0.3rem;
+  white-space: nowrap;
+}
+
+.journey__stop.is-open .journey__place {
+  color: var(--warm-white);
+}
+
+.journey__stop.is-open .journey__button {
+  border-left: 1px dashed var(--border-strong);
+  padding-left: 1rem;
+}
+
+.journey__earlier {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: clamp(2.5rem, 6vh, 4rem);
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.journey__earlier p {
+  margin: 0;
+  color: var(--mid-grey);
+  font-size: var(--step--1);
+  max-width: 76ch;
+}
+
+@media (max-width: 1080px) {
+  .journey__layout {
+    grid-template-columns: 1fr;
+  }
+
+  .journey__board {
+    position: static;
+    max-width: 24rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .journey__button {
+    grid-template-columns: 3rem 1fr;
+    gap: 0.9rem;
+  }
+
+  .journey__period {
+    grid-column: 2;
+    padding-top: 0.6rem;
+  }
+}

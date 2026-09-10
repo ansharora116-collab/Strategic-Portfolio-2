@@ -1,0 +1,119 @@
+/* Shared layout for the two board-driven sections (Approach, Marketing). */
+
+.board-section__grid {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.9fr) minmax(280px, 1fr) minmax(260px, 1fr);
+  gap: clamp(2rem, 5vw, 4.5rem);
+  align-items: start;
+}
+
+.board-section__grid--wide {
+  grid-template-columns: minmax(240px, 1fr) minmax(280px, 1fr) minmax(280px, 1.05fr);
+}
+
+.board-section__board {
+  position: sticky;
+  top: 6.5rem;
+}
+
+.board-section__panels {
+  min-height: 16rem;
+}
+
+.board-section__statement {
+  font-size: var(--step-2);
+  color: var(--warm-white);
+  margin-bottom: 1.1rem;
+}
+
+.board-section__question {
+  font-size: var(--step-2);
+  margin-bottom: 1rem;
+  color: var(--warm-white);
+}
+
+.board-section__body {
+  color: var(--muted-white);
+}
+
+.board-section__evidence {
+  margin-top: 1.6rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid var(--border);
+  color: var(--mid-grey);
+  font-size: var(--step--1);
+}
+
+.board-section__evidence .mono {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.facets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.facets li {
+  position: relative;
+  padding-left: 0.95rem;
+  font-size: var(--step--1);
+  color: var(--muted-white);
+}
+
+.facets li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 5px;
+  height: 5px;
+  background: var(--warm-white);
+}
+
+/* --- Stacked mobile fallback --------------------------------------- */
+
+.steps {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.steps__item {
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--border);
+}
+
+.steps__title {
+  margin: 0.7rem 0 0.9rem;
+  font-size: var(--step-2);
+  color: var(--warm-white);
+}
+
+.steps__statement {
+  font-size: var(--step-1);
+  color: var(--warm-white);
+  margin-bottom: 0.8rem;
+}
+
+.steps__body {
+  color: var(--muted-white);
+}
+
+@media (max-width: 1080px) {
+  .board-section__grid,
+  .board-section__grid--wide {
+    grid-template-columns: minmax(200px, 0.8fr) minmax(260px, 1fr);
+  }
+
+  .board-section__board {
+    grid-row: span 2;
+    position: static;
+  }
+
+  .board-section__panels {
+    grid-column: 1 / -1;
+    min-height: 0;
+  }
+}
